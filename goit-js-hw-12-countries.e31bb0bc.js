@@ -506,8 +506,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var BASE_URL = 'https://restcountries.eu/rest/v2/name';
 
-function fetchCountry(countryName) {
-  return fetch("".concat(BASE_URL, "/").concat(countryName)).then(function (response) {
+function fetchCountry(searchQuery) {
+  return fetch("".concat(BASE_URL, "/").concat(searchQuery)).then(function (response) {
     return response.json();
   });
 }
@@ -2850,18 +2850,18 @@ var refs = (0, _refs.default)();
 refs.searchInput.addEventListener('input', (0, _lodash.default)(function () {
   onSearch();
 }, 500));
-var searchQuery = '';
+var countryName = '';
 
 function onSearch() {
-  searchQuery = refs.searchInput.value;
-  console.log(searchQuery);
+  countryName = refs.searchInput.value;
+  console.log(countryName);
 
-  if (!searchQuery) {
+  if (!countryName) {
     clearRenderMarkup();
     return;
   }
 
-  _fetchCountries.default.fetchCountry(searchQuery).then(countryCheckControl).catch(onFetchError);
+  _fetchCountries.default.fetchCountry(countryName).then(countryCheckControl).catch(onFetchError);
 }
 
 function countryCheckControl(countries) {
@@ -2899,7 +2899,6 @@ function clearRenderMarkup() {
 
 function onFetchError(error) {
   clearRenderMarkup();
-  console.log(error);
 }
 
 function foundError() {
@@ -2948,7 +2947,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53364" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61773" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
