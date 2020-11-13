@@ -18,18 +18,18 @@ refs.searchInput.addEventListener('input', debounce(() => {
 }, 500),
 );
 
-let searchQuery = '';
+let countryName = '';
 
 function onSearch() {
-    searchQuery = refs.searchInput.value;
-    console.log(searchQuery);
+    countryName = refs.searchInput.value;
+    console.log(countryName);
 
-    if (!searchQuery) {
+    if (!countryName) {
         clearRenderMarkup();
         return;
     }
 
-    API.fetchCountry(searchQuery)
+    API.fetchCountry(countryName)
         .then(countryCheckControl)
         .catch(onFetchError)
 }
@@ -70,12 +70,10 @@ function onSearch() {
 
     function onFetchError(error) {
     clearRenderMarkup();
-
-    console.log(error);
 }
 
-    function foundError() {
-  info({
+function foundError() {
+    info({
     title: 'Sorry, friend!',
     text: 'No matches found! Try again!',
     delay: 2500,
